@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center mt-2">
+  <h2>Update {{ username }}</h2>
+</div>
+<div class="row-group">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      placeholder="username ..."
+      type="text"
+      class="form-control"
+      [(ngModel)]="username"
+      disabled
+      id="username"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input
+      placeholder="password ..."
+      [type]="passwordVisible ? 'text' : 'password'"
+      class="form-control"
+      [(ngModel)]="password"
+      [ngClass]="{ 'error-border': passwordError }"
+      id="password"
+      [class.error-border]="passwordError"
+    />
+    <span *ngIf="passwordError" style="color: red; font-size: smaller">
+      Pass must be at least 8 characters
+    </span>
+    <a (click)="togglePasswordVisibility()">
+      <i
+        class="fa"
+        [ngClass]="{
+          'fa-eye fa-solid': passwordVisible,
+          'fa-eye-slash fa-solid': !passwordVisible
+        }"
+      ></i>
+    </a>
+  </div>
+</div>
+<div class="row-group">
+  <div class="form-group">
+    <label for="fullName">Full Name:</label>
+    <input
+      placeholder="full name ..."
+      type="text"
+      class="form-control"
+      [(ngModel)]="fullName"
+      id="fullName"
+      [ngClass]="{ 'error-border': fullNameError }"
+    />
+    <div *ngIf="fullNameError" style="color: red; font-size: smaller">
+      fullName is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input
+      placeholder="email ..."
+      type="email"
+      class="form-control"
+      [(ngModel)]="email"
+      [ngClass]="{ 'error-border': emailError }"
+      id="email"
+      [class.error-border]="emailError"
+    />
+
+    <div *ngIf="emailError" style="color: red; font-size: smaller">
+      Invalid email format
+    </div>
+  </div>
+</div>
+<div>
+  <div class="form-group">
+    <label for="nationalNumber">National Number</label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="nationalNumber"
+      id="nationalNumber"
+      placeholder="Enter national number..."
+      [ngClass]="{ 'error-border': nationalNumberError }"
+    />
+    <div *ngIf="nationalNumberError" style="color: red; font-size: smaller">
+      National number must be 10 digits
+    </div>
+  </div>
+</div>
+<div class="row-group">
+  <div class="form-group">
+    <label for="userType">User Type</label>
+    <select
+      class="form-select"
+      [(ngModel)]="userType"
+      id="userType"
+      [ngClass]="{ 'error-border': addUserClicked && userTypeError }"
+    >
+      <option value="" disabled selected>User Type</option>
+      <option value="Admin">Admin</option>
+      <option value="User">User</option>
+    </select>
+    <div
+      *ngIf="addUserClicked && userTypeError"
+      style="color: red; font-size: smaller"
+    >
+      Please select a user Type.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select
+      class="form-select"
+      [(ngModel)]="gender"
+      id="gender"
+      [ngClass]="{ 'error-border': addUserClicked && genderError }"
+    >
+      <option value="" disabled selected>Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+    <div
+      *ngIf="addUserClicked && genderError"
+      style="color: red; font-size: smaller"
+    >
+      Please select a gender.
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-end">
+  <button (click)="cancel()" class="btn btn-secondary">Cancel</button>
+  <button (click)="updateUser()" class="btn btn-primary">Update User</button>
+</div>

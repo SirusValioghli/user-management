@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="container">
+    <div class="headerRight">
+      <img src="{{ avatarImageUrl }}" alt="avatar" class="avatar" />
+      <div class="userDashboard mt-3">
+        <h1>Welcome, {{ loggedInUserFullName }}</h1>
+        <p>welcome to dash</p>
+      </div>
+    </div>
+    <div class="headerLeft mt-2">
+      <img
+        routerLink="/login"
+        src="{{ refreshButtonImageUrl }}"
+        alt="refresh"
+        width="30px"
+        class="refresh mb-1 me-3"
+      />
+      <p class="date">{{ getFormattedDate() }}</p>
+    </div>
+  </div>
+</header>

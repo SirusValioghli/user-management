@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card">
+    <h2>Login</h2>
+    <div class="input-group">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" [(ngModel)]="username" />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" [(ngModel)]="password" />
+      </div>
+      <button (click)="login()" routerLink="/login">Enter</button>
+      <div *ngIf="loginError" class="error-message">
+        Invalid username or password.
+      </div>
+    </div>
+  </div>
+</div>

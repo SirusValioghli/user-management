@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="text-center">
+    <app-user-filter
+      (filteredUsersChange)="updateFilteredUsers($event)"
+    ></app-user-filter>
+    <h1>Users List</h1>
+    <div class="col-md-12 mt-4">
+      <table id="userTable" class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>National Number</th>
+            <th>User Type</th>
+            <th>gender</th>
+            <th>id</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.nationalNumber }}</td>
+            <td>{{ user.userType }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.id }}</td>
+            <td>
+              <a (click)="deleteUser(user.id)" class="text-secondary me-2">
+                <i class="fa fa-trash"></i>
+              </a>
+              <a (click)="openUpdateModal(user)" class="text-secondary me-1">
+                <i class="fa fa-pencil"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" (click)="openUserModal()">Add User</button>
+  </div>
+</div>
